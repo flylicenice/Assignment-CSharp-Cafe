@@ -18,14 +18,55 @@ namespace Assignment_1
             foodTextBox2.Text += food_Drinks;
         }
 
-        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        private void previousB_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        private void goB_Click(object sender, EventArgs e)
         {
+            List<CheckBox> checkList = new List<CheckBox>();
+            foreach (CheckBox checkbox in panel1.Controls.OfType<CheckBox>())
+            {
+                if (checkbox.Checked)
+                {
+                    checkList.Add(checkbox);
+                }
+            }
 
+            foreach (CheckBox checkbox in checkList)
+            {
+                panel2.Controls.Add(checkbox);
+            }
+        }
+
+        private void backB_Click(object sender, EventArgs e)
+        {
+            List<CheckBox> checkList = new List<CheckBox>();
+            foreach (CheckBox checkbox in panel2.Controls.OfType<CheckBox>())
+            {
+                if (checkbox.Checked)
+                {
+                    checkList.Add(checkbox);
+                }
+            }
+
+            foreach (CheckBox checkbox in checkList)
+            {
+                panel1.Controls.Add(checkbox);
+            }
+        }
+
+        private void nextB_Click(object sender, EventArgs e)
+        {
+            RadioButton anyRB = paymentBox.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            if (anyRB != null)
+            {
+                MessageBox.Show("Pay with " + anyRB.Text + ".");
+            } else
+            {
+                MessageBox.Show("Please select a payment method!");
+            }
         }
     }
 }
