@@ -45,7 +45,9 @@ namespace Assignment_1
 
         private void checkoutBtn_Click(object sender, EventArgs e)
         {
-
+            string food_and_drinks = foodTextBox.Text + hotDrinkTextBox.Text + icedDrinkTextBox.Text;
+            FormCheckOut formChkOut = new FormCheckOut(food_and_drinks);
+            formChkOut.Show();
         }
 
         private void FormMenuList_Load(object sender, EventArgs e)
